@@ -28,7 +28,7 @@ import wdk
 dev = wdk.Device('192.168.0.1')
 dev.ExecuteGet('$')
 ```
-Note, this will succeed on versions before B13_fam2 without using login, using $sys_lang-bypass, if the bypass-flag is set when instantiating the class (default False). 
+Note, this will succeed on versions before B13_fam2 without using login, using $sys_lang-bypass, if the bypass-flag is set when instantiating the class (default False). Furthermore, this will only return the "public" parts of the CDB, some CDB variables are hidden from this view but can be returned when explicitly requested . 
 
 Memory read
 -----------
