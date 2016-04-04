@@ -64,5 +64,10 @@ class Device:
         return bytearray(r)
     def MemRead(self,addr,size=0x80):return self.MemDump(addr,size)
     def MemWrite(self,addr,block):
-        cmd='%;'.join(['mem eb '+hex(a+addr)[2:-1]+' '+hex(block[a])[2:] for a in range(0,len(block))])
-        return self.ExecuteGet(cmd)
+        r=[]
+        sections=[block[i:i+32] for i in range(0,len(block),32)]
+        for section in sections:
+            cmd='%;'.join(['mem eb '+hex(a+addr)[2:-1]+' '+hex(section[a])[2:] for a in range(0,len(section))])
+            r+=self.ExecuteGet(cmd)
+            addr+=len(section)
+        return r
