@@ -7,7 +7,7 @@ Python 2.7.x (not 3.x)
 
 Installation
 ============
-python setup.py
+sudo python setup.py install
 
 Usage
 =====
